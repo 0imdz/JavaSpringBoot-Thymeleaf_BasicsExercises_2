@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h1>Updates</h1>
+  <form th:action="@{/veterinario/editarperro}" th:object="${perroEnviado}" method="post">
+
+      <input type="hidden" th:field="${perroEnviado.id}" value="${perroEnviado.id}" readonly="readonly">
+
+      <input type="text" th:field="${perroEnviado.nombre}" value="${perroEnviado.nombre}">
+      <input type="text" th:field="${perroEnviado.enfermedades}" value="${perroEnviado.enfermedades}">
+      <input type="submit">
+  </form>
+</body>
+</html>

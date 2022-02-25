@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Enfermedades</th>
+                <th>Borrar</th>
+                <th>Editar</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <form th:action="@{/veterinario/borrar}" method="post">
+                <tr th:each="perro : ${listaPerros}">
+                    <td><span th:text="${perro.nombre}"></span></td>
+                    <td><span th:text="${perro.enfermedades}"></span></td>
+                    <td><input type="checkbox" th:value="${perro.id}" th:name="perrosSeleccionados"/></td>
+                    <td><a th:href="@{/veterinario/modificar/}+${perro.id}">Editar</a></td>
+                </tr>
+                <input type="submit" text="borrar">
+            </form>
+        </tbody>
+    </table>
+
+    <form th:action="@{/veterinario/perroanyadido}" th:object="${perro}" method="post">
+        <input type="text" th:field="${perro.nombre}">
+        <input type="text" th:field="${perro.enfermedades}">
+        <input type="submit">
+    </form>
+</body>
+</html>
